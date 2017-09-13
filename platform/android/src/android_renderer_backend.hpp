@@ -12,6 +12,10 @@ public:
     void bind() override;
     void updateAssumedState() override;
 
+    // Ensures the current context is not
+    // cleaned up when destroyed
+    void markContextLost();
+
     void updateViewPort();
 
     void resizeFramebuffer(int width, int height);
