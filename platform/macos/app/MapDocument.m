@@ -163,7 +163,7 @@ NS_ARRAY_OF(id <MGLAnnotation>) *MBXFlattenedShapes(NS_ARRAY_OF(id <MGLAnnotatio
     MGLMapCamera *camera = self.mapView.camera;
     
     MGLMapSnapshotOptions* options = [[MGLMapSnapshotOptions alloc] initWithStyleURL:self.mapView.styleURL camera:camera size:self.mapView.bounds.size];
-    options.zoom = self.mapView.zoomLevel;
+    options.zoomLevel = self.mapView.zoomLevel;
     
     // Create and start the snapshotter
     snapshotter = [[MGLMapSnapshotter alloc] initWithOptions:options];
@@ -177,6 +177,7 @@ NS_ARRAY_OF(id <MGLAnnotation>) *MBXFlattenedShapes(NS_ARRAY_OF(id <MGLAnnotatio
             
             // Set the default name for the file and show the panel.
             NSSavePanel* panel = [NSSavePanel savePanel];
+            
             [panel setNameFieldStringValue:newName];
             [panel beginSheetModalForWindow:window completionHandler:^(NSInteger result){
                 if (result == NSFileHandlingPanelOKButton) {
@@ -197,6 +198,7 @@ NS_ARRAY_OF(id <MGLAnnotation>) *MBXFlattenedShapes(NS_ARRAY_OF(id <MGLAnnotatio
                     }
                     
                     NSString *extension = [[fileURL pathExtension] lowercaseString];
+
                     NSBitmapImageFileType fileType;
                     if ([extension isEqualToString:@"png"]) {
                         fileType = NSPNGFileType;
