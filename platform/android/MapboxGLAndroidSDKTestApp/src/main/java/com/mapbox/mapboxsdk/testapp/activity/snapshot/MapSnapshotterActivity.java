@@ -28,7 +28,7 @@ public class MapSnapshotterActivity extends AppCompatActivity {
 
   private GridLayout grid;
   private List<MapSnapshotter> snapshotters = new ArrayList<>();
-
+  private Bitmap bitmap;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +106,10 @@ public class MapSnapshotterActivity extends AppCompatActivity {
           imageView,
           new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column))
         );
+
+        if(bitmap ==null){
+          bitmap = snapshot;
+        }
       }
     });
     snapshotters.add(snapshotter);
@@ -126,6 +130,10 @@ public class MapSnapshotterActivity extends AppCompatActivity {
 
   public static float randomInRange(float min, float max) {
     return (random.nextFloat() * (max - min)) + min;
+  }
+
+  public Bitmap getBitmap(){
+    return bitmap;
   }
 
 }

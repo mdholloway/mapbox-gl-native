@@ -553,6 +553,13 @@ run-android-ui-test-$1-%: platform/android/configuration.gradle
 	-adb uninstall com.mapbox.mapboxsdk.testapp 2> /dev/null
 	cd platform/android && $(MBGL_ANDROID_GRADLE) -Pmapbox.abis=$2 :MapboxGLAndroidSDKTestApp:connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class="$$*"
 
+# Run render tests
+run-android-render-test-$1: platform/android/configuration.gradle
+	-adb uninstall com.mapbox.mapboxsdk.testapp 2> /dev/null
+	cd platform/android && $(MBGL_ANDROID_GRADLE) -Pmapbox.abis=$2 :MapboxGLAndroidSDKTestApp:connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class="com.mapbox.mapboxsdk.testapp.render.RenderTest"
+	adb pull /storage/sdcard/mapbox/actual.png
+	pixelmatch actual.png expected.png output.png 0.1
+
 endef
 
 # Explodes the arguments into individual variables

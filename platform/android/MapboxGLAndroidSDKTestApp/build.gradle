@@ -69,6 +69,8 @@ dependencies {
         transitive = true
     }
 
+
+
     // Testing dependencies
     androidTestCompile rootProject.ext.dep.testSpoonRunner
     androidTestCompile rootProject.ext.dep.supportAnnotations
@@ -76,6 +78,9 @@ dependencies {
     androidTestCompile rootProject.ext.dep.testRules
     androidTestCompile rootProject.ext.dep.testEspressoCore
     androidTestCompile rootProject.ext.dep.testEspressoIntents
+
+    // Note that espresso-idling-resource is used in the code under test.
+    compile rootProject.ext.dep.testEspressoIdling
 }
 
 apply from: 'gradle-make.gradle'

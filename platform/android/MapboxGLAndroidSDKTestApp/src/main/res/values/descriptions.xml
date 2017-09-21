@@ -59,5 +59,6 @@
     <string name="description_building_fill_extrusion_layer">Shows how to show 3D extruded buildings</string>
     <string name="description_animated_image_source">Shows how to animate georeferenced images</string>
     <string name="description_bottom_sheet">Show 2 MapView on screen with a bottom sheet</string>
+    <string name="description_render_test">Render test</string>
     <string name="description_map_snapshotter">Show a static bitmap taken with the MapSnapshotter</string>
 </resources>
